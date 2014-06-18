@@ -14,3 +14,7 @@ Install Homebrew: http://brew.sh/
 
 Install ffmpeg with the libraries we'll require:
 brew install ffmpeg --with-theora --with-libogg --with-libvorbis --with-libvpx
+
+Download this droplet app
+
+Drop videos onto the app and follow the prompts
