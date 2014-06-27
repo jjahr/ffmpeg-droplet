@@ -89,6 +89,11 @@ on open names
 		-- After encoding: open folder, play sound.
 		set afterEncoding to "open .; afplay \"/System/Library/Sounds/Glass.aiff\";"
 		
+		set ffmpeg to "ffmpeg"
+		--set ffmpeg to path to resource "ffmpeg/2.2.2/bin/ffmpeg"
+		--set ffmpeg to quoted form of (POSIX path of ffmpeg)
+		--display dialog ffmpeg as text
+		
 		-- Start conversion
 		
 		if selectedFormats contains "HTML5: OGV" then
@@ -97,7 +102,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i  '" & inputName & "' -acodec libvorbis -ac 2 -ab " & audioBitrate & " -ar 44100 -b:v " & videoBitrate & " " & videoWidth & "'" & outputName & "'; " & afterEncoding
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i  '" & inputName & "' -acodec libvorbis -ac 2 -ab " & audioBitrate & " -ar 44100 -b:v " & videoBitrate & " " & videoWidth & "'" & outputName & "'; " & afterEncoding
 				end tell
 			end if
 		end if
@@ -108,7 +113,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i '" & inputName & "' -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p " & videoWidth & "'" & outputName & "'; " & afterEncoding
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i '" & inputName & "' -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p " & videoWidth & "'" & outputName & "'; " & afterEncoding
 				end tell
 			end if
 		end if
@@ -119,7 +124,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i '" & inputName & "' -acodec libvorbis -ac 2 -ab " & audioBitrate & " -ar 44100 -vcodec libvpx -b:v " & videoBitrate & " " & videoWidth & "'" & outputName & "'; " & afterEncoding
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i '" & inputName & "' -acodec libvorbis -ac 2 -ab " & audioBitrate & " -ar 44100 -vcodec libvpx -b:v " & videoBitrate & " " & videoWidth & "'" & outputName & "'; " & afterEncoding
 				end tell
 			end if
 		end if
@@ -130,7 +135,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i '" & inputName & "' -ar 44100 -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p -t 15 -vf \"crop=ih:ih:iw/2-ih/2:0,scale=640:640\" " & "'" & outputName & "'; " & afterEncoding & " echo \"Instagram videos are trimmed to 15 seconds.\""
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i '" & inputName & "' -ar 44100 -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p -t 15 -vf \"crop=ih:ih:iw/2-ih/2:0,scale=640:640\" " & "'" & outputName & "'; " & afterEncoding & " echo \"Instagram videos are trimmed to 15 seconds.\""
 				end tell
 			end if
 		end if
@@ -141,7 +146,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i '" & inputName & "' -ar 44100 -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p -t 15 -vf \"crop=iw-(iw-ih)/2:ih,pad=iw:iw:0:(iw-ih)/2,scale=640:640\" " & "'" & outputName & "'; " & afterEncoding & " echo \"Instagram videos are trimmed to 15 seconds.\""
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i '" & inputName & "' -ar 44100 -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p -t 15 -vf \"crop=iw-(iw-ih)/2:ih,pad=iw:iw:0:(iw-ih)/2,scale=640:640\" " & "'" & outputName & "'; " & afterEncoding & " echo \"Instagram videos are trimmed to 15 seconds.\""
 				end tell
 			end if
 		end if
@@ -152,7 +157,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i '" & inputName & "' -ar 44100 -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p -t 15 -vf \"pad=iw:iw:0:(iw-ih)/2,scale=640:640\" " & "'" & outputName & "'; " & afterEncoding & " echo \"Instagram videos are trimmed to 15 seconds.\""
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i '" & inputName & "' -ar 44100 -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -f mp4 -threads 0 -pix_fmt yuv420p -t 15 -vf \"pad=iw:iw:0:(iw-ih)/2,scale=640:640\" " & "'" & outputName & "'; " & afterEncoding & " echo \"Instagram videos are trimmed to 15 seconds.\""
 				end tell
 			end if
 		end if
@@ -163,7 +168,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i '" & inputName & "' -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -ar 44100 -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -vf \"scale=min(1280\\,iw):trunc(ow/a/16)*16\" -r 30 -t 20:00 -f mp4 -threads 0 -pix_fmt yuv420p " & "'" & outputName & "'; " & afterEncoding & " echo \"Facebook videos are trimmed to 20 minutes.\""
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i '" & inputName & "' -acodec aac -ac 2 -strict experimental -ab " & audioBitrate & " -ar 44100 -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v " & videoBitrate & " -vf \"scale=min(1280\\,iw):trunc(ow/a/16)*16\" -r 30 -t 20:00 -f mp4 -threads 0 -pix_fmt yuv420p " & "'" & outputName & "'; " & afterEncoding & " echo \"Facebook videos are trimmed to 20 minutes.\""
 				end tell
 			end if
 		end if
@@ -174,7 +179,7 @@ on open names
 			set outputPath to fileParent & outputName
 			if checkExist(outputPath) then
 				tell application "Terminal"
-					do script "cd \"" & fileParent & "\"; ffmpeg -i '" & inputName & "' -ar 44100 -acodec aac -ac 1 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v 1048k -r 24 -f mp4 -threads 0 -pix_fmt yuv420p -t 6 -vf crop=ih:ih:iw/2-ih/2:0,scale=480:480 " & "'" & outputName & "'; " & afterEncoding & " echo \"Vine videos are trimmed to 6 seconds.\""
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i '" & inputName & "' -ar 44100 -acodec aac -ac 1 -strict experimental -ab " & audioBitrate & " -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b:v 1048k -r 24 -f mp4 -threads 0 -pix_fmt yuv420p -t 6 -vf crop=ih:ih:iw/2-ih/2:0,scale=480:480 " & "'" & outputName & "'; " & afterEncoding & " echo \"Vine videos are trimmed to 6 seconds.\""
 				end tell
 			end if
 		end if
@@ -197,7 +202,7 @@ on open names
 				tell application "Terminal"
 					-- Pass 1: Write to dev/null, but save bitrate info to log files.
 					-- Pass 2: Read log files, write to output file.
-					do script "cd \"" & fileParent & "\"; ffmpeg -i \"" & inputName & "\" -y " & params & " -pass 1 /dev/null && ffmpeg -i \"" & inputName & "\" " & params & " -pass 2 -movflags faststart \"" & outputName & "\"; rm \"ffmpeg2pass-0.log\"; rm \"ffmpeg2pass-0.log.mbtree\"; " & afterEncoding & " echo \"Finished 2-pass Youtube encoding.\""
+					do script "cd \"" & fileParent & "\"; " & ffmpeg & " -i \"" & inputName & "\" -y " & params & " -pass 1 /dev/null && " & ffmpeg & " -i \"" & inputName & "\" " & params & " -pass 2 -movflags faststart \"" & outputName & "\"; rm \"ffmpeg2pass-0.log\"; rm \"ffmpeg2pass-0.log.mbtree\"; " & afterEncoding & " echo \"Finished 2-pass Youtube encoding.\""
 				end tell
 			end if
 		end if
