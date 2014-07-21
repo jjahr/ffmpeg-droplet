@@ -1,9 +1,16 @@
 ffmpeg-droplet
 ==============
 
-Convert videos for upload to Instagram, Youtube, Facebook, Vine, and HTML5 (MP4, WEBM, OGV)
+Convert videos:
 
-REQUIRES: Xcode and FFMPEG.
+* For upload to Instagram, 
+* For upload to Youtube, 
+* For upload to Facebook, 
+* For upload to Vine, 
+* For embedding with HTML5 <video> (MP4, WEBM, OGV)
+* To animated GIF
+
+REQUIRES: Xcode, FFMPEG, ImageMagick.
 
 Getting Started:
 ==============
