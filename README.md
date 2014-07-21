@@ -1,4 +1,4 @@
-What does it do?
+ffmpeg-droplet
 ==============
 
 Convert videos optimized for:
