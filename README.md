@@ -1,30 +1,32 @@
-ffmpeg-droplet
+What does it do?
 ==============
 
-Convert videos:
+Convert videos optimized for:
+* Instagram
+* Youtube
+* Facebook
+* Vine
+* Embedding with HTML5 <video> (MP4, WEBM, OGV)
+* Animated GIF
 
-* For upload to Instagram, 
-* For upload to Youtube, 
-* For upload to Facebook, 
-* For upload to Vine, 
-* For embedding with HTML5 <video> (MP4, WEBM, OGV)
-* To animated GIF
-
-REQUIRES: Xcode, FFMPEG, ImageMagick.
+Requires: 
+* Xcode 
+* FFMPEG
+* ImageMagick
 
 Getting Started:
 ==============
 
-Install Xcode: https://developer.apple.com/xcode/downloads/
+* Install Xcode: https://developer.apple.com/xcode/downloads/
 
-Install Homebrew: http://brew.sh/
+* Install Homebrew: http://brew.sh/
 
-Install ffmpeg with the libraries we'll require:
-brew install ffmpeg --with-theora --with-libogg --with-libvorbis --with-libvpx
+* Install ffmpeg with these libraries:
+	* brew install ffmpeg --with-theora --with-libogg --with-libvorbis --with-libvpx
 
-Install imagemagick (if you want to make GIFs)
-brew install imagemagick
+* Install imagemagick (if you want to make GIFs)
+	* brew install imagemagick
 
-Download this droplet app
+* Download this app
 
-Drop videos onto the app and follow the prompts
+* Drop videos onto app icon, follow prompts
