@@ -14,6 +14,17 @@ Requires:
 * FFMPEG
 * ImageMagick
 
+gif-droplet
+==============
+
+Convert video to gif.  Uses FFMPEG to convert video to PNG sequence, then uses Convert (imagemagick) to convert to GIF.  GIFs are usually quite large, recommend trimming video to short time.
+
+expand-to-aspect-ratio
+==============
+
+Resizes video of any aspect ratio to a standard aspect ratio (choose 16:9 or 4:3).  Does this by adding bars (choose white or black) to the top-bottom or left-right.
+
+
 Getting Started:
 ==============
 
