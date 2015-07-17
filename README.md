@@ -1,14 +1,14 @@
 These are handy droplets for converting videos and photos.  
 
 Usage:
-* Drag your input photo/video onto the droplet
-* Answer prompts (hit enter to use defaults)
-* Output file is saved to same folder with a descriptive suffix (eg. "-scaledto720.mp4")
+* Drag input photo or video onto droplet
+* Answer prompts
+* Output file is given a descriptive suffix (eg. "-noaudio.mp4") and saved to same folder as input.
 
 Droplets will not run unless you first install:
 * FFMPEG command line
 * ImageMagick command line
-Homebrew (http://brew.sh/) is an easy way to install this.
+See Getting Started below.
 
 List of Droplets:
 ==============
@@ -22,14 +22,15 @@ List of Droplets:
 * gif-droplet
 	* Create GIF from video.  Droplet will give prompts to scale down dimensions and reduce frame rate.
 * resize-image
-	* Drop images onto droplet, it will resize the biggest edge to size you specify, and save them to same folder with filename suffix (eg. "-800px.jpg").
+	* Drop images onto droplet, it will resize the biggest edge to size you specify
+	* Save images to same folder with filename suffix (eg. "-800px.jpg").
 * convert-for-powerpoint
 	* Like ffmpeg-droplet, but output forced to be powerpoint compatible.
 
 Technical Details:
 ==============
-* I made all droplets in Apple Script Editor.  They use AppleScript to call up dialogs for choosing settings.  Then they open Terminal and run FFMPEG with the right settings.  
-* gif-droplet: A little different from the rest.  It uses FFMPEG to convert video to PNG sequence in a temporary folder next to your input file.  Then it uses Convert (by imagemagick) to convert PNG sequence to GIF.  I find that GIFs are usually way bigger file size than I expect.  I get best results scaling down video dimensions, reducing to like 15fps and keeping it less than 5 seconds.  
+* I made all droplets in Apple Script Editor.  They use AppleScript to show dialogs for choosing settings.  Then they open Terminal and run FFMPEG with the right settings.  
+* gif-droplet: I could not find an easy way to convert video to GIF directly.  So it uses FFMPEG to convert video to PNG sequence in a temporary folder next to your input file.  Then it uses Convert (by imagemagick) to convert PNG sequence to GIF.  I find that GIFs are usually way bigger file size than I expect.  I get best results scaling down video dimensions, reducing to like 15fps and keeping it less than 5 seconds.  
 
 Getting Started:
 ==============
