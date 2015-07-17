@@ -1,8 +1,8 @@
-These are handy droplets for converting videos and photos.  
+Collection of handy droplets for converting videos and photos.  They're AppleScript wrappers that show dialogs for choosing settings, and then open Terminal and run FFMPEG for you.
 
 Usage:
-* Drag input photo or video onto droplet
-* Answer prompts
+* Drag input photo(s) or video(s) onto droplet
+* Answer dialogs
 * Output file is given a descriptive suffix (eg. "-noaudio.mp4") and saved to same folder as input.
 
 Droplets will not run unless you first install:
