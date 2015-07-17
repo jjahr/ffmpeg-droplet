@@ -1,43 +1,42 @@
-ffmpeg-droplet
+These are handy droplets for converting videos and photos.  
+
+Usage:
+* Drag your input photo/video onto the droplet
+* Answer prompts (hit enter to use defaults)
+* Output file is saved to same folder with a descriptive suffix (eg. "-scaledto720.mp4")
+
+Droplets will not run unless you first install:
+* FFMPEG command line
+* ImageMagick command line
+Homebrew (http://brew.sh/) is an easy way to install this.
+
+List of Droplets:
 ==============
+* ffmpeg-droplet
+	* The big bad droplet.  
+	* Convert videos optimized for Youtube, Instagram or Vine (resized/cropped to 640x640), Embedding with HTML5 <video> (MP4, WEBM, OGV), etc.
+	* Detects non-standard size and aspect ratio, gives options to pad/crop to standard.
+	* Detects non-standard frame rate, gives options to convert to standard.
+* remove-audio
+	* Remove audio from video, without touching video stream.  Saves to same folder with suffix (eg. "-noaudio.mp4").
+* gif-droplet
+	* Create GIF from video.  Droplet will give prompts to scale down dimensions and reduce frame rate.
+* resize-image
+	* Drop images onto droplet, it will resize the biggest edge to size you specify, and save them to same folder with filename suffix (eg. "-800px.jpg").
+* convert-for-powerpoint
+	* Like ffmpeg-droplet, but output forced to be powerpoint compatible.
 
-Convert videos optimized for:
-* Instagram
-* Youtube
-* Facebook
-* Vine
-* Embedding with HTML5 <video> (MP4, WEBM, OGV)
-* Animated GIF
-
-Requires: 
-* Xcode 
-* FFMPEG
-* ImageMagick
-
-gif-droplet
+Technical Details:
 ==============
-
-Convert video to gif.  Uses FFMPEG to convert video to PNG sequence, then uses Convert (imagemagick) to convert to GIF.  GIFs are usually quite large, recommend trimming video to short time.
-
-expand-to-aspect-ratio
-==============
-
-Resizes video of any aspect ratio to a standard aspect ratio (choose 16:9 or 4:3).  Does this by adding bars (choose white or black) to the top-bottom or left-right.
-
+* I made all droplets in Apple Script Editor.  They use AppleScript to call up dialogs for choosing settings.  Then they open Terminal and run FFMPEG with the right settings.  
+* gif-droplet: A little different from the rest.  It uses FFMPEG to convert video to PNG sequence in a temporary folder next to your input file.  Then it uses Convert (by imagemagick) to convert PNG sequence to GIF.  I find that GIFs are usually way bigger file size than I expect.  I get best results scaling down video dimensions, reducing to like 15fps and keeping it less than 5 seconds.  
 
 Getting Started:
 ==============
-
-* Install Xcode: https://developer.apple.com/xcode/downloads/
-
 * Install Homebrew: http://brew.sh/
-
 * Install ffmpeg with these libraries:
 	* brew install ffmpeg --with-theora --with-libogg --with-libvorbis --with-libvpx
-
 * Install imagemagick (if you want to make GIFs)
 	* brew install imagemagick
-
-* Download this app
-
+* Download these droplets
 * Drop videos onto app icon, follow prompts
